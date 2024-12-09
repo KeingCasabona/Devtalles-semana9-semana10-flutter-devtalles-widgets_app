@@ -5,6 +5,8 @@ import 'package:widgets_app/config/menu/menu_item.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  static const String name = 'home_screen';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +52,7 @@ class _CustomListTile extends StatelessWidget {
       leading: Icon(menuItem.icon, color: color),
       trailing: Icon(Icons.chevron_right, color: color),
       onTap: () {
+        //SOLOS SE UTILIZO EL LINK O PATH Y SE HA UTILIZADO EL NAME DEL GOROUTE:
         context.push(menuItem.link);
       },
     );
