@@ -39,7 +39,7 @@ class _CardsView extends StatelessWidget {
           ),
           ...cards.map(
             (card) =>
-                _CardType1(elevation: card['elevation'], label: card['label']),
+                _CardType2(elevation: card['elevation'], label: card['label']),
           )
         ],
       ),
@@ -74,6 +74,49 @@ class _CardType1 extends StatelessWidget {
             Align(
               alignment: Alignment.bottomLeft,
               child: Text(label),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _CardType2 extends StatelessWidget {
+  const _CardType2({
+    required this.label,
+    required this.elevation,
+  });
+
+  final String label;
+  final double elevation;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+        side: BorderSide(
+          color: colors.outline,
+        ),
+      ),
+      elevation: elevation,
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.more_vert_outlined),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Text('$label - outline'),
             )
           ],
         ),
