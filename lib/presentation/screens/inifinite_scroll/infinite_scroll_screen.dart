@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -79,7 +80,14 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
         onPressed: () {
           context.pop();
         },
-        child: Icon(Icons.arrow_back_ios_new_outlined),
+        child: isLoading
+            ? SpinPerfect(
+                child: Icon(Icons.refresh_rounded),
+                infinite: true,
+              )
+            : FadeIn(
+                child: Icon(Icons.arrow_back_ios_new_outlined),
+              ),
       ),
     );
   }
