@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
       theme: AppTheme(selectedColor: 1).getTheme(),
-      title: 'Material App',
+      title: 'Flutter Widgets',
     );
   }
 }
