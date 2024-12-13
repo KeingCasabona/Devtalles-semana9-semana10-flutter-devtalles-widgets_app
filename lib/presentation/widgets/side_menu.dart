@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_app/config/menu/menu_item.dart';
 
 class SideMenu extends StatefulWidget {
   const SideMenu({super.key});
@@ -11,6 +12,8 @@ class _SideMenuState extends State<SideMenu> {
   int navDrawerIndex = 1;
   @override
   Widget build(BuildContext context) {
+    final hasNotch = MediaQuery.of(context).viewPadding.top > 35;
+
     return NavigationDrawer(
       selectedIndex: navDrawerIndex,
       onDestinationSelected: (value) {
@@ -19,13 +22,34 @@ class _SideMenuState extends State<SideMenu> {
         });
       },
       children: [
-        NavigationDrawerDestination(
-          icon: Icon(Icons.add),
-          label: Text('Home Screen'),
+        Padding(
+          padding: EdgeInsets.fromLTRB(20, hasNotch ? 0 : 20, 16, 10),
+          child: Text('Main'),
         ),
-        NavigationDrawerDestination(
-            icon: Icon(Icons.card_travel_outlined),
-            label: Text('Otra pantalla'))
+        ...appMenuItems.sublist(0, 3).map(
+          (item) {
+            return NavigationDrawerDestination(
+              icon: Icon(item.icon),
+              label: Text(item.title),
+            );
+          },
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(28, 16, 28, 10),
+          child: Divider(),
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(28, 16, 28, 10),
+          child: Text('More opciones'),
+        ),
+        ...appMenuItems.sublist(3).map(
+          (item) {
+            return NavigationDrawerDestination(
+              icon: Icon(item.icon),
+              label: Text(item.title),
+            );
+          },
+        ),
       ],
     );
   }
